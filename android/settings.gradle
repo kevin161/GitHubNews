@@ -1,0 +1,3 @@
+rootProject.name = 'GitHubNews'
+
+include ':app'
