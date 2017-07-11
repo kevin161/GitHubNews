@@ -9,7 +9,8 @@ import {
     StyleSheet,
     Text,
     View,
-    Image
+    Image,
+    DeviceEventEmitter
 } from 'react-native';
 
 import TabNavigator from 'react-native-tab-navigator'
@@ -40,7 +41,7 @@ export default class HomePage extends Component {
                     onPress={() => this.setState({selectedTab: 'popular'})}
                 >
                     {/*选项卡对应的页面*/} 
-                     <PopularPage/> 
+                     <PopularPage {...this.props}/>
                 </TabNavigator.Item>
 
                 <TabNavigator.Item
@@ -90,7 +91,25 @@ export default class HomePage extends Component {
             </TabNavigator>
         </View>;
     }
+
+    componentDidMount(){
+        //添加事件监听
+        this.listener = DeviceEventEmitter.addListener('HOMEPAGE_RELOAD',(n)=>{
+            //主页重新加载
+            //跳转到新的场景，并重置整个路由战
+            this.props.navigator.resetTo({
+                component :HomePage
+            });
+        });
+    }
+
+    componentWillUnmount(){
+        this.listener.remove();
+    }
+
 }
+
+
 
 const styles = StyleSheet.create({
     container: {

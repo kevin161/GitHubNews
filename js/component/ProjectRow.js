@@ -9,7 +9,9 @@ import {
     StyleSheet,
     Text,
     View,
-    Image
+    Image,
+    ListView,
+    TouchableOpacity
 } from 'react-native';
 
 export default class ProjectRow extends Component {
@@ -20,7 +22,10 @@ export default class ProjectRow extends Component {
 
     render() {
         var item = this.props.item;
-        return <View style={styles.container}>
+        return <TouchableOpacity
+            activeOpacity={0.5}
+            onPress={this.props.onSelect}>
+        <View style={styles.container}>
             <Text style={styles.title}>{item.full_name}</Text>
             <Text style={styles.description}>{item.description}</Text>
             <View style={styles.bottom}>
@@ -37,6 +42,7 @@ export default class ProjectRow extends Component {
                 </View>
             </View>
         </View>
+        </TouchableOpacity>;
     }
 }
 

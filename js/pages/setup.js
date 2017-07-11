@@ -21,7 +21,7 @@ export default function setup() {
             //navigator对象作为属性值，传递到HomePage页面
             //传参
             //return <Target {...route.params} navigator={navigator}/>;
-            return <Target navigator={navigator}/>
+            return <Target {...route.params} navigator={navigator}/>
         };
         render(){
             /*

@@ -11,8 +11,9 @@ import {
     View,
     Image
 } from 'react-native';
-import CustomKeyPage from './CustomKeyPage';
 import  NavigationBar from '../../component/NavigationBar'
+import CustomKeyPage from './CustomKeyPage';
+import SortKeyPage from "./SortKeyPage";
 
 export default class MyPage extends Component {
 
@@ -24,14 +25,22 @@ export default class MyPage extends Component {
         });
     };
 
+    // 分类排序
+    gotoSortKey =()=>{
+        this.props.navigator.push({
+            component:SortKeyPage
+        });
+    }
+
     render() {
         return <View style={styles.container}>
             <NavigationBar
                 title="我的"/>
             <View style={{flexDirection:'column',alignItems:'center',marginTop:30}}>
                 <Text onPress={this.gotoCustomKeyPage}>自定义分类</Text>
+                <Text onPress={this.gotoSortKey} style={{marginTop:20}} > 分类排序</Text>
             </View>
-        </View>
+        </View>;
 
     }
 

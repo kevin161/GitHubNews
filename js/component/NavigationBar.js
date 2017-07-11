@@ -3,7 +3,7 @@
  * asia161@qq.com
  */
 
-import React, {Component} from 'react';
+import React, {Component ,PropTypes} from 'react';
 import {
     AppRegistry,
     StyleSheet,
@@ -18,6 +18,11 @@ import {
 //会包含状态栏，还有顶部导航栏
 export default class NavigationBar extends Component {
 
+    static proTypes={
+        //验证，不传element组件类型，会报错提示
+        rightButton :PropTypes.element,
+        leftButton : PropTypes.element
+    }
 
     render() {
         return <View style={styles.container}>
